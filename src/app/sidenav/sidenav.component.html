@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <div class="loadin-progress-bar">
+    <mat-progress-bar *ngIf="dataLoading" [mode]="'indeterminate'"> </mat-progress-bar>
+  </div>
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>Silo Towers</span>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [fixedTopGap]="sidenavTop" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <!-- <mat-toolbar color="primary">Menu</mat-toolbar> -->
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon matListIcon>poll</mat-icon>
+        <a matLine [routerLink]="['/towers']" routerLinkActive="router-link-active">Towers</a>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <section class="container">
+      <div class="flex-container">
+        <!-- <app-silos-tower></app-silos-tower> -->
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

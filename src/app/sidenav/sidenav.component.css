@@ -1,0 +1,25 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+}
+
+.app-toolbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
+}
+
+.loadin-progress-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+}

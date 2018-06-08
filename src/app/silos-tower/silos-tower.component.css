@@ -1,0 +1,68 @@
+.thin-rect {
+  fill: #cbcbcb;
+}
+
+.indicator {
+  opacity: 0.5;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #21b249;
+  z-index: 10;
+}
+
+.line {
+  fill: none;
+  stroke: #8b959f;
+  stroke-width: 4;
+  stroke-miterlimit: 22.9256;
+}
+
+.tower-status {
+  width: 68px;
+  height: 3px;
+  /* background-color: #21b149ff; */
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.tower-flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tower-title {
+  color: #ffffff;
+  font-size: 14px;
+  width: 200px;
+  text-align: center;
+  font: 400 14px/15px 'Roboto', sans-serif;
+}
+
+.bottom-tower-title {
+  margin-top: 20px;
+}
+
+.percent-title,
+.carnallite-mass {
+  color: #ffffff;
+  font-size: 26px;
+  width: 200px;
+  text-align: center;
+  margin-top: 18px;
+  font: 400 26px/22px 'Roboto', sans-serif;
+}
+
+.bounce {
+  animation: indicator-warn-anim 500ms infinite alternate;
+}
+
+@keyframes indicator-warn-anim {
+  from {
+    fill: #f88f18;
+  }
+  to {
+    fill: rgb(255, 0, 0);
+  }
+}
