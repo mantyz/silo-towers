@@ -80,17 +80,14 @@ export class SilosTowerComponent implements OnInit, AfterViewInit {
 
   private _changeIndicatorHeight() {
     const indicatorElement = this._indicator.nativeElement as SVGRectElement;
-    let indicatorHeight = (this.fullTower / 100) * this.percent;
-    if (indicatorHeight > this.fullTower) {
-      indicatorHeight = this.fullTower;
+    let scaleY = this.percent / 100;
+
+    if (this.percent > 100) {
+      scaleY = 1;
+    } else if (this.percent < 0) {
+      scaleY = 0;
     }
-    indicatorElement.setAttribute(
-      'y',
-      `${this._yTop + this.fullTower - indicatorHeight}`
-    );
-    indicatorElement.setAttribute(
-      'height',
-      `${this.fullTower - this.fullTower + indicatorHeight}`
-    );
+
+    indicatorElement.setAttribute('transform', `scale(1, ${scaleY})`);
   }
 }

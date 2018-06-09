@@ -7,7 +7,7 @@
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: #21b249;
-  z-index: 10;
+  transform-origin: 100% 83%;
 }
 
 .line {
