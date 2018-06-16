@@ -74,13 +74,19 @@ export class SilosTowerComponent implements OnInit, AfterViewInit {
       this.data.value > this.data.maxValue
     ) {
       this._towerStatus = 'warn';
+    } else {
+      this._towerStatus = 'ok';
     }
     return this._towerStatus;
   }
 
   private _changeIndicatorHeight() {
     const indicatorElement = this._indicator.nativeElement as SVGRectElement;
-    let scaleY = this.percent / 100;
+
+    /**
+     * Scale do not work in IE, because IE do not suppot css method 'transform-origin'
+     */
+    /* let scaleY = this.percent / 100;
 
     if (this.percent > 100) {
       scaleY = 1;
@@ -88,6 +94,29 @@ export class SilosTowerComponent implements OnInit, AfterViewInit {
       scaleY = 0;
     }
 
-    indicatorElement.setAttribute('transform', `scale(1, ${scaleY})`);
+    indicatorElement.setAttribute('transform', `scale(1, ${scaleY})`); */
+
+    let indicatorHeight = (this.fullTower / 100) * this.percent;
+    if (indicatorHeight > this.fullTower) {
+      indicatorHeight = this.fullTower;
+    }
+    indicatorElement.setAttribute(
+      'y',
+      `${this._yTop + this.fullTower - indicatorHeight}`
+    );
+    indicatorElement.setAttribute(
+      'height',
+      `${this.fullTower - this.fullTower + indicatorHeight}`
+    );
+  }
+
+  plusDataValue() {
+    this.data.value += 200;
+    this._changeIndicatorHeight();
+  }
+
+  minusDataValue() {
+    this.data.value -= 200;
+    this._changeIndicatorHeight();
   }
 }
